@@ -4,11 +4,61 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <stdexcept>
+
 
 using std::cin;		using std::setprecision;
 using std::cout;	using std::string;
 using std::endl;	using std::streamsize;
 using std::vector;	using std::sort;
+using std::istream;	using std::domain_error;
+
+// compute the median of a vector<double>
+// note that calling this function copies the entire argument vector
+double median(vector<double> vec)
+{
+	typedef vector<double>::size_type vec_sz;
+	vec_sz size = vec.size();
+	if (size == 0)
+		throw domain_error("median of an empty vector");
+	sort(vec.begin(), vec.end());
+	vec_sz mid = size / 2;
+	return size % 2 == 0 ? (vec[mid] + vec[mid - 1]) / 2 : vec[mid];
+}
+
+// compute a student's overall grade from midterm and final exam grades and homework grade
+double grade(double midterm, double final, double homework)
+{
+	return 0.2 * midterm + 0.4 * final + 0.4 * homework;
+}
+
+// compute a student's overall grade from midterm and final exam grades
+// // and vector of homework grades.
+// this function does not copy its argument, because median does so for us.
+double grade(double midterm, double final, const vector<double>& hw)
+{
+	if (hw.size() == 0)
+		throw domain_error("student has done no homework");
+	return grade(midterm, final, median(hw));
+}
+
+// read homework grades from an input stream into a vector<double>
+istream& read_hw(istream& in, vector<double>& hw)
+{
+	if (in) {
+		// get rid of previous contents
+		hw.clear();
+
+		// read homework grades
+		double x;
+		while (in >> x)
+			hw.push_back(x);
+
+		// clear the stream so that input will work for the next student
+		in.clear();
+	}
+	return in;
+}
 
 int main()
 {
@@ -27,37 +77,23 @@ int main()
 	cout << "Enter all your home work grades, "
 		"followed by end-of-file: ";
 
-	// revised version of the excerpt:
-	double x;
 	vector<double> homework;
 
-	// invariant:homework contains all the homework grades read so far
-	while (cin >> x)
-		homework.push_back(x);
+	// read the homework gradesa
+	read_hw(cin, homework);
 
-	// check that the student entered some homework gerades
-	typedef vector<double>::size_type vec_sz;
-	vec_sz size = homework.size();
-	if (size == 0) {
-		cout << endl << "You must enter your grades. "
-			"Plase try again." << endl;
-		return 1;
+	// compute and generate the final grade, if possible
+	try {
+		double final_grade = grade(midterm, final, homework);
+		streamsize prec = cout.precision();
+		cout << "Your final grade is " << setprecision(3)
+			<< final_grade << setprecision(prec) << endl;
 	}
-
-	// sort the grades
-	sort(homework.begin(), homework.end());
-
-	// compute the median homework grade
-	vec_sz mid = size / 2;
-	double median;
-	median = size % 2 == 0 ? (homework[mid] + homework[mid - 1]) / 2
-		: homework[mid];
-
-	// compute and write the final grade
-	streamsize prec = cout.precision();
-	cout << "Your final grade is " << setprecision(3)
-		<< 0.2 * midterm + 0.4 * final + 0.4 * median
-		<< setprecision(prec) << endl;
+	catch (domain_error) {
+		cout << endl << "You must enter your grades. "
+			"Please try again." << endl;
+	}
 	
 	return 0;
 }
+
