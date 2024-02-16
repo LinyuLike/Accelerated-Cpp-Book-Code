@@ -1,6 +1,8 @@
+#include <list>
+#include <algorithm>
+
 #include "Student_info.h"
 #include "grade.h"
-#include <list>
 
 using std::istream;
 using std::vector;
@@ -38,19 +40,23 @@ istream& read(istream& is, Student_info& s)
 	return is;
 }
 
-
-// separate passing and failing student records: first try
-list<Student_info> extract_fails(list<Student_info>& students)
+list<Student_info> 
+extract_fails(list<Student_info>& students)
 {
 	list<Student_info> fail;
-	list<Student_info>::iterator iter = students.begin();
-	while (iter != students.end()) {
-		if (fgrade(*iter)) {
-			fail.push_back(*iter);
-			iter = students.erase(iter);
-		}
-		else
-			++iter;
-	}
+
+	// copy all the students that didn't pass to fail
+	remove_copy_if(students.begin(), students.end(),
+		back_inserter(fail), pgrade);
+	// move all the students that pass to the front,
+	// then delete the records which didn't moved.
+	students.erase(remove_if(students.begin(), students.end(),
+		fgrade), students.end());
 	return fail;
+}
+
+bool did_all_hw(const Student_info& s)
+{
+	return((find(s.homework.begin(), s.homework.end(), 0))
+		== s.homework.end());
 }

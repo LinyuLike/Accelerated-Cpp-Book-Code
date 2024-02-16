@@ -1,9 +1,12 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <iterator>
+
 #include "use_std.h"
 
 using namespace std;
+
 
 bool space(char c)
 {
@@ -126,6 +129,7 @@ string::size_type width(const vector<string>& v)
 	return maxlen;
 }
 
+
 vector<string> frame(const vector<string>& v)
 {
 	vector<string> ret;
@@ -146,17 +150,18 @@ vector<string> frame(const vector<string>& v)
 	return ret;
 }
 
-vector<string> vcat(const vector<string>& top,
-	const vector<string>& bottom)
+vector<string> vcat(const vector<string>& top, const vector<string>& bottom)
 {
 	// copy the top picture
 	vector<string> ret = top;
 
 	// copy entire bottom picture
 	copy(bottom.begin(), bottom.end(), back_inserter(ret));
+
+	return ret;
 }
 
-vector<string> hcar(const vector<string>& left, const vector<string>& right)
+vector<string> hcat(const vector<string>& left, const vector<string>& right)
 {
 	vector<string> ret;
 
