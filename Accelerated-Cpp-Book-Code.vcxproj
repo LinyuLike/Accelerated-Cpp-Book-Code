@@ -123,11 +123,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="median.cpp" />
     <ClCompile Include="Student_info.cpp" />
+    <ClCompile Include="use_std.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
     <ClInclude Include="Student_info.h" />
+    <ClInclude Include="use_std.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,6 +27,9 @@
     <ClCompile Include="grade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="use_std.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="median.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="grade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="use_std.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
