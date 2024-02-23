@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <map>
 #include <cctype>
 
 #include "grade.h"
@@ -18,6 +19,7 @@ using std::domain_error;	using std::streamsize;
 using std::endl;			using std::string;
 using std::max;				using std::vector;
 using std::isspace;			using std::ostream;
+using std::map;
 
 void write_analysis(ostream& out, const string& name,
 	double analysys(const vector<Student_info>&),
@@ -60,3 +62,19 @@ int main()
 	return 0;
 }
 
+// chapter 7.2
+int count()
+{
+	string s;
+	map<string, int> counters;
+
+	while (cin >> s)
+		++counters[s];
+
+	for (map<string, int>::const_iterator it = counters.begin();
+		it != counters.end(); ++it)
+	{
+		cout << it->first << "\t" << it->second << endl;
+	}
+	return 0;
+}
