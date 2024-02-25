@@ -21,6 +21,106 @@ using std::max;				using std::vector;
 using std::isspace;			using std::ostream;
 using std::map;				using std::istream;
 
+typedef vector<string> Rule;
+typedef vector<Rule> Rule_collection;
+typedef map<string, Rule_collection> Grammar;
+
+// read a grammar from a given input stream
+Grammar read_grammar(istream& in)
+{
+	Grammar ret;
+	string line;
+
+	// read the input
+	while (getline(in, line))
+	{
+		// split the input into words
+		vector<string> entry = split(line);
+
+		if (!entry.empty())
+			// use the category to store the associated rule
+			ret[entry[0]].push_back(
+				Rule(entry.begin() + 1, entry.end()));
+	}
+	return ret;
+}
+
+bool bracketed(const string& s)
+{
+	return s.size() > 1 && s[0] == '<' && s[s.size() - 1] == '>';
+}
+
+// return a random interger in the range [0, n)
+int nrand(int n)
+{
+	if (n <= 0 || n > RAND_MAX)
+		throw std::domain_error("Argument to nrand is out of range");
+
+	const int bucket_size = RAND_MAX / n;
+	int r;
+	do r = rand() / bucket_size;
+	while (r >= n);
+
+	return r;
+}
+
+void
+gen_aux(const Grammar& g, const string& word, vector<string>& ret)
+{
+	if (!bracketed(word)) {
+		ret.push_back(word);
+	}
+	else {
+		// locate the rule that corresponds to word
+		Grammar::const_iterator it = g.find(word);
+		if (it == g.end())
+			throw std::logic_error("empty rule");
+
+		// fetch the set of possible rules
+		const Rule_collection& c = it->second;
+
+		// from which we selected one at random
+		const Rule& r = c[nrand(c.size())];
+
+		// recursively expand the selected rule
+		for (Rule::const_iterator i = r.begin(); i != r.end(); ++i)
+			gen_aux(g, *i, ret);
+	}
+}
+
+vector<string> gen_sentence(const Grammar& g)
+{
+	vector<string> ret;
+	gen_aux(g, "<sentence>", ret);
+	return ret;
+}
+
+// 7.4 make sentence
+int main()
+{
+	// generate the sentence
+	vector<string> sentence = gen_sentence(read_grammar(cin));
+
+	// write the first word, if any
+	vector<string>::const_iterator it = sentence.begin();
+	if (!sentence.empty())
+	{
+		cout << *it;
+		++it;
+	}
+
+	// write the rest of the words, each preceded by a space
+	while (it != sentence.end())
+	{
+		cout << " " << *it;
+		++it;
+	}
+
+	cout << endl;
+	return 0;
+}
+
+
 
 // chapter 7.2
 int count()
@@ -39,6 +139,7 @@ int count()
 	return 0;
 }
 
+/*
 // chapter 7.3
 int main()
 {
@@ -66,50 +167,6 @@ int main()
 		// write a new line to separate each word from the next
 		cout << endl;
 	}
-	return 0;
-}
-
-
-// TODO move to another file later
-void write_analysis(ostream& out, const string& name,
-	double analysys(const vector<Student_info>&),
-	const vector<Student_info>& did,
-	const vector<Student_info>& didnt)
-{
-	out << name << ": median(did) = " << analysys(did) <<
-		", median(didnt) = " << analysys(didnt) << endl;
-}
-
-/*
-int main()
-{
-	// students who did and didn't do all their homework
-	vector<Student_info> did, didnt;
-
-	// read the student records and partition them
-	Student_info student;
-	while (read(cin, student)) {
-		if (did_all_hw(student))
-			did.push_back(student);
-		else
-			didnt.push_back(student);
-	}
-
-	// verify that the analysys will show us something
-	if (did.empty()) {
-		cout << "No student did all the homework!" << endl;
-		return 1;
-	}
-	if (didnt.empty()) {
-		cout << "Every student did all the homework!" << endl;
-		return 1;
-	}
-
-	// do the analysys
-	write_analysis(cout, "median", median_analysis, did, didnt);
-	write_analysis(cout, "average", average_analysis, did, didnt);
-	write_analysis(cout, "median if honework turned in",
-		optimistic_median_analysis, did, didnt);
 	return 0;
 }
 */

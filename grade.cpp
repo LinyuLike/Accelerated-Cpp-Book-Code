@@ -2,6 +2,8 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <iostream>
+#include <string>
 
 #include "Student_info.h"
 #include "grade.h"
@@ -103,3 +105,46 @@ double optimistic_median_analysis(const vector<Student_info>& students)
 		back_inserter(grades), optimistic_median);
 	return median(grades);
 }
+
+void write_analysis(std::ostream& out, const std::string& name,
+	double analysys(const vector<Student_info>&),
+	const vector<Student_info>& did,
+	const vector<Student_info>& didnt)
+{
+	out << name << ": median(did) = " << analysys(did) <<
+		", median(didnt) = " << analysys(didnt) << std::endl;
+}
+
+/*
+int main()
+{
+	// students who did and didn't do all their homework
+	vector<Student_info> did, didnt;
+
+	// read the student records and partition them
+	Student_info student;
+	while (read(cin, student)) {
+		if (did_all_hw(student))
+			did.push_back(student);
+		else
+			didnt.push_back(student);
+	}
+
+	// verify that the analysys will show us something
+	if (did.empty()) {
+		cout << "No student did all the homework!" << endl;
+		return 1;
+	}
+	if (didnt.empty()) {
+		cout << "Every student did all the homework!" << endl;
+		return 1;
+	}
+
+	// do the analysys
+	write_analysis(cout, "median", median_analysis, did, didnt);
+	write_analysis(cout, "average", average_analysis, did, didnt);
+	write_analysis(cout, "median if honework turned in",
+		optimistic_median_analysis, did, didnt);
+	return 0;
+}
+*/

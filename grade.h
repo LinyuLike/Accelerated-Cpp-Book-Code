@@ -23,5 +23,7 @@ double average_analysis(const std::vector<Student_info>& students);
 double optimistic_median(const Student_info& s);
 double optimistic_median_analysis(const std::vector<Student_info>& students);
 
+void write_analysis(std::ostream&, const std::string&, double, const std::vector<Student_info>&, const std::vector<Student_info>&);
+
 
 #endif // !GUARD_grade_h

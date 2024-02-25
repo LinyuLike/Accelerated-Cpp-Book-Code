@@ -124,7 +124,7 @@ vector<string> split(const string& str)
 }
 
 map<string, vector<int> >
-xref(istream& in, vector<string> find_words(const string&) = split)
+xref(istream& in, vector<string> find_words(const string&))
 {
 	string line;
 	int line_number = 0;
