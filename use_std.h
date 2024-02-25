@@ -16,6 +16,7 @@ std::string::const_iterator url_beg(std::string::const_iterator b, std::string::
 std::vector<std::string> find_urls(const std::string& s);
 
 std::vector<std::string> split(const std::string& str);
+map<string, vector<int>> xref(istream& in, vector<string> find_words(const string&) = split);
 std::string::size_type width(const std::vector<std::string>& v);
 std::vector<std::string> frame(const std::vector<std::string>& v);
 
