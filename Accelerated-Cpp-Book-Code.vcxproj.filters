@@ -30,6 +30,9 @@
     <ClCompile Include="use_std.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sentence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="median.h">
@@ -42,6 +45,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="use_std.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sentence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="template_func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
