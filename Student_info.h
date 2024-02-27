@@ -6,8 +6,19 @@
 #include <vector>
 #include <list>
 
-struct Student_info {
-	std::string name;
+class Student_info {
+public:
+	// interface goes here
+	Student_info();
+	Student_info(std::istream&);
+	bool valid() const { return !homework.empty(); }
+	std::istream& read(std::istream&);
+	double grade(); // cosnt
+	std::string name() const { return n; }
+
+private:
+	// implementation goes here
+	std::string n;
 	double midterm, final;
 	std::vector<double> homework;
 };
