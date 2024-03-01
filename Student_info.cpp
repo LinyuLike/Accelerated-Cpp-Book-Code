@@ -1,8 +1,8 @@
 #include <list>
 #include <algorithm>
 
-#include "Student_info.h"
 #include "grade.h"
+#include "Student_info.h"
 
 using std::istream;
 using std::vector;

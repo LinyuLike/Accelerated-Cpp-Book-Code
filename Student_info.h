@@ -1,5 +1,4 @@
-#ifndef GUARD_Student_info
-#define GUARD_Student_info
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -29,5 +28,3 @@ std::istream& read_hw(std::istream&, std::vector<double>&);
 std::list<Student_info> extract_fails(std::list<Student_info>&);
 
 bool did_all_hw(const Student_info&);
-
-#endif // !GUARD_Student_info

@@ -1,5 +1,4 @@
-#ifndef GUARD_grade_h
-#define GUARD_grade_h
+#pragma once
 
 #include <vector>
 #include "Student_info.h"
@@ -25,5 +24,3 @@ double optimistic_median_analysis(const std::vector<Student_info>& students);
 
 void write_analysis(std::ostream&, const std::string&, double, const std::vector<Student_info>&, const std::vector<Student_info>&);
 
-
-#endif // !GUARD_grade_h
