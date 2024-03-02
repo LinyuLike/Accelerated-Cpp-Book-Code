@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <ios>
 #include <iostream>
+#include <fstream>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -21,18 +22,73 @@ using std::endl;			using std::string;
 using std::max;				using std::vector;
 using std::isspace;			using std::ostream;
 using std::map;				using std::istream;
+using std::ofstream;		using std::ifstream;
+using std::cerr;
 
-int main()
+
+int main(int argc, char** argv)
 {
-	int x = 5;
+	int fail_count = 0;
+	// for each file in the input list
+	for (int i = 1; i < argc; ++i)
+	{
+		ifstream in(argv[i]);
+		// if it exist,write its contents,otherwise generate an error message
+		if (in)
+		{
+			string s;
+			while (getline(in, s))
+			{
+				cout << s << endl;
+			}
+		}
+		else
+		{
+			cerr << "cannot open file " << argv[i] << endl;
+			++fail_count;
+		}
+	}
+	return fail_count;
+}
 
-	// p points to x
-	int* p = &x;
-	cout << "x = " << x << endl;
+// P162
+// this funciton is completely lefitimate.
+int* pointer_to_static()
+{
+	static int x;
+	return &x;
+}
 
-	// change the value of x through p
-	*p = 6;
-	cout << "x = " << x << endl;
+// P163
+int* pinter_to_dynamic()
+{
+	return new int(0);
+}
+
+// P164
+char* duplicate_chars(const char* p)
+{
+	// allocate enough space;remember to add one for the null
+	size_t length = strlen(p) + 1;
+	char* result = new char[length];
+
+	// copy into our newly allocated space and return pointer to first element
+	std::copy(p, p + length, result);
+	return result;
+}
+
+int main_10_5(int argc, char** argv)
+{
+	// if there are command-line arguments, write them
+	if (argc > 1)
+	{
+		cout << argv[1];	// write the first argument
+
+		// write each remaining argument with a sapce before it
+		for (int i = 2; i != argc; ++i)
+			cout << " " << argv[i];	// argv[i] is a char*
+	}
+	cout << endl;
 	return 0;
 }
 
