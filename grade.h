@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "Student_info.h"
 
 
@@ -23,4 +24,6 @@ double optimistic_median(const Student_info& s);
 double optimistic_median_analysis(const std::vector<Student_info>& students);
 
 void write_analysis(std::ostream&, const std::string&, double, const std::vector<Student_info>&, const std::vector<Student_info>&);
+
+std::string letter_grade(double grade);
 
