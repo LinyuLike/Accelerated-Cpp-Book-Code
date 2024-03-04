@@ -13,6 +13,7 @@
 #include "grade.h"
 #include "Student_info.h"
 #include "use_std.h"
+#include "Vec.h"
 
 
 using std::cin;				using std::setprecision;
@@ -27,5 +28,4 @@ using std::cerr;
 
 int main()
 {
-
 }

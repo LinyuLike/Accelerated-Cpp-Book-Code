@@ -123,14 +123,15 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="median.cpp" />
     <ClCompile Include="sentence.cpp" />
+    <ClCompile Include="Str.cpp" />
     <ClCompile Include="Student_info.cpp" />
     <ClCompile Include="use_std.cpp" />
-    <ClCompile Include="Vec.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
     <ClInclude Include="sentence.h" />
+    <ClInclude Include="Str.h" />
     <ClInclude Include="Student_info.h" />
     <ClInclude Include="template_func.h" />
     <ClInclude Include="use_std.h" />

@@ -33,7 +33,7 @@
     <ClCompile Include="sentence.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vec.cpp">
+    <ClCompile Include="Str.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Str.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
