@@ -133,6 +133,7 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="Grad.h" />
     <ClInclude Include="grade.h" />
+    <ClInclude Include="Handle.h" />
     <ClInclude Include="median.h" />
     <ClInclude Include="sentence.h" />
     <ClInclude Include="Str.h" />

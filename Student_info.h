@@ -6,15 +6,14 @@
 #include <list>
 
 #include "Grad.h"
+#include "Handle.h"
 
 class Student_info {
 public:
 	// constructors and copy control
-	Student_info() :cp(0) {}
-	Student_info(std::istream& is) :cp(0) { read(is); }
-	Student_info(const Student_info&);	// copy constructor
-	Student_info& operator=(const Student_info&);
-	~Student_info() { delete cp; }
+	Student_info(){}
+	Student_info(std::istream& is) { read(is); }
+	// no copy,assign,or destructor:they're no longer needed
 
 	// operations
 	std::istream& read(std::istream&);
@@ -33,7 +32,7 @@ public:
 	}
 
 private:
-	Core* cp;
+	Handle<Core> cp;
 };
 
 bool compare(const Student_info&, const Student_info&);

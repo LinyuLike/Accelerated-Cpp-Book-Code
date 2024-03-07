@@ -10,8 +10,6 @@ using std::list;
 
 istream& Student_info::read(istream& is)
 {
-	delete cp;
-
 	char ch;
 	is >> ch;
 
@@ -19,26 +17,7 @@ istream& Student_info::read(istream& is)
 		cp = new Core(is);
 	else
 		cp = new Grad(is);
-
 	return is;
-}
-
-Student_info::Student_info(const Student_info& s) :cp(0)
-{
-	if (s.cp) cp = s.cp->clone();
-}
-
-Student_info& Student_info::operator=(const Student_info& s)
-{
-	if (&s != this)
-	{
-		delete cp;
-		if (s.cp)
-			cp = s.cp->clone();
-		else
-			cp = 0;
-	}
-	return *this;
 }
 
 // read homework grades from an input stream into a vector<double>
@@ -59,15 +38,6 @@ istream& read_hw(istream& in, vector<double>& hw)
 	return in;
 }
 
-//istream& read(istream& is, Student_info& s)
-//{
-//	// read and store the student's name and midterm and final exam grades
-//	is >> s.name() >> s.midterm >> s.final;
-//
-//	read_hw(is, s.homework); // read and store all the student's homework grades
-//	return is;
-//}
-
 list<Student_info> 
 extract_fails(list<Student_info>& students)
 {
@@ -82,9 +52,3 @@ extract_fails(list<Student_info>& students)
 		fgrade), students.end());
 	return fail;
 }
-
-//bool did_all_hw(const Student_info& s)
-//{
-//	return((find(s.homework.begin(), s.homework.end(), 0))
-//		== s.homework.end());
-//}

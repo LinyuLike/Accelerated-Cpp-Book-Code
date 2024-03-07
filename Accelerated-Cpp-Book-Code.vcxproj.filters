@@ -74,5 +74,8 @@
     <ClInclude Include="Grad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Handle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
