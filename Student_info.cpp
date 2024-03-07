@@ -8,25 +8,37 @@ using std::istream;
 using std::vector;
 using std::list;
 
-Student_info::Student_info() :midterm(0), final(0) {}
-
-Student_info::Student_info(istream& is) { read(is); }
-
-istream& Student_info::read(istream& in)
+istream& Student_info::read(istream& is)
 {
-	in >> n >> midterm >> final;
-	read_hw(in, homework);
-	return in;
+	delete cp;
+
+	char ch;
+	is >> ch;
+
+	if (ch == 'U')
+		cp = new Core(is);
+	else
+		cp = new Grad(is);
+
+	return is;
 }
 
-double Student_info::grade() // const
+Student_info::Student_info(const Student_info& s) :cp(0)
 {
-	return ::grade(midterm, final, homework);
+	if (s.cp) cp = s.cp->clone();
 }
 
-bool compare(const Student_info& x, const Student_info& y)
+Student_info& Student_info::operator=(const Student_info& s)
 {
-	return x.name() < y.name();
+	if (&s != this)
+	{
+		delete cp;
+		if (s.cp)
+			cp = s.cp->clone();
+		else
+			cp = 0;
+	}
+	return *this;
 }
 
 // read homework grades from an input stream into a vector<double>

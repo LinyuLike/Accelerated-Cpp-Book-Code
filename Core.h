@@ -6,6 +6,7 @@
 
 class Core
 {
+	friend class Student_info;
 public:
 	Core() :midterm(0), final(0) {}
 	Core(std::istream& is) { read(is); }
@@ -19,17 +20,7 @@ protected:
 	std::istream& read_common(std::istream&);
 	double midterm, final;
 	std::vector<double> homework;
+	virtual Core* clone() const { return new Core(*this); }
 private:
 	std::string n;
 };
-
-
-bool compare(const Core& c1, const Core& c2)
-{
-	return c1.name() < c2.name();
-}
-
-bool compare_Core_ptrs(const Core* cp1, const Core* cp2)
-{
-	return compare(*cp1, *cp2);
-}

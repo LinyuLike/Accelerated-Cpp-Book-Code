@@ -14,5 +14,5 @@ std::istream& Grad::read(std::istream& in)
 
 double Grad::grade() const
 {
-	return std::min(Core::grad(), thesis);
+	return std::min(Core::grade(), thesis);
 }
