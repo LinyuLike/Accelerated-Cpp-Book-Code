@@ -31,6 +31,16 @@ double grade(double midterm, double final, vector<double>& hw)  // can't invoke 
 	return grade(midterm, final, median(hw));*/
 }
 
+double grade(const double midterm, const double final, 
+	const vector<double>& hw)
+{
+	return 0;
+
+	/*if (hw.size() == 0)
+		throw domain_error("student has done no homework");
+	return grade(midterm, final, median(hw));*/
+}
+
 double grade(const Student_info& s)
 {
 	return 0;

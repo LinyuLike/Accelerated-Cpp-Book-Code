@@ -7,6 +7,7 @@
 
 double grade(double, double, double);
 double grade(double, double, std::vector<double>&);
+double grade(const double, const double, const std::vector<double>&);
 double grade(const Student_info&);
 
 bool fgrade(const Student_info&);

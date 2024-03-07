@@ -119,6 +119,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Grad.cpp" />
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="median.cpp" />
@@ -128,6 +130,8 @@
     <ClCompile Include="use_std.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Grad.h" />
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
     <ClInclude Include="sentence.h" />
