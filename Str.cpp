@@ -11,7 +11,7 @@ std::ostream& operator<< (std::ostream& os, const Str& s)
 
 std::istream& operator>> (std::istream& is, Str& s)
 {
-	s.data.clear();	// Error data is private
+	s.data->clear();	// Error data is private
 
 	char c;
 	while (is.get(c) && std::isspace(c))
@@ -19,7 +19,7 @@ std::istream& operator>> (std::istream& is, Str& s)
 
 	if (is)
 	{
-		do s.data.push_back(c);
+		do s.data->push_back(c);
 		while (is.get(c) && !std::isspace(c));
 
 		// if we read whitespace, then put it back on the stream

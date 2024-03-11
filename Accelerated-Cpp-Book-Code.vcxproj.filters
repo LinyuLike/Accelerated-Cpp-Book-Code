@@ -18,13 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="median.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Student_info.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="grade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="use_std.cpp">
@@ -44,13 +38,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="median.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Student_info.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="grade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="use_std.h">
@@ -75,6 +63,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Handle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ref_handle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ptr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

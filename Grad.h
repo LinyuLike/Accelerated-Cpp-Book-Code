@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Core.h"
 
 class Grad :
@@ -10,11 +11,12 @@ public:
 
     double grade() const;
     std::istream& read(std::istream&);
-
+    void regrade(double d1, double d2);
+    Grad* clone() const;
+    
 protected:
-    Grad* clone() const { return new Grad(*this); }
+    
 
 private:
     double thesis;
 };
-

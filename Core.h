@@ -16,11 +16,15 @@ public:
 
 	virtual std::istream& read(std::istream&);
 	virtual double grade() const;
+	virtual void regrade(double d1, double d2 = 0);
+	virtual Core* clone() const;
+	
 protected:
 	std::istream& read_common(std::istream&);
 	double midterm, final;
 	std::vector<double> homework;
-	virtual Core* clone() const { return new Core(*this); }
+	
+	
 private:
 	std::string n;
 };

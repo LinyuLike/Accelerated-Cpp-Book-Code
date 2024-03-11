@@ -4,6 +4,9 @@
 #include <memory>
 #include <algorithm>
 
+#include "template_func.h"
+
+
 template <class T> class Vec
 {
 public:
@@ -63,6 +66,15 @@ private:
 	void grow();
 	void unchecked_append(const T&);
 };
+
+
+// we need the inline mark, otherwise we'll get some redefined error
+template <>
+inline Vec<char>* make_clone(const Vec<char>* vp)
+{
+	return new Vec<char>(*vp);
+};
+
 
 // template function can't be defined in source file
 

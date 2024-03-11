@@ -4,6 +4,12 @@
 #include <vector>
 
 template <class T>
+T* make_clone(const T* tp)
+{
+	return tp->clone();
+}
+
+template <class T>
 T median(std::vector<T> v)
 {
 	typedef typename std::vector<T>::size_type vec_sz;
