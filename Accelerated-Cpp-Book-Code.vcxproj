@@ -122,6 +122,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Grad.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Picture.cpp" />
     <ClCompile Include="sentence.cpp" />
     <ClCompile Include="Str.cpp" />
     <ClCompile Include="Student_info.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="Grad.h" />
     <ClInclude Include="Handle.h" />
+    <ClInclude Include="Picture.h" />
     <ClInclude Include="Ptr.h" />
     <ClInclude Include="Ref_handle.h" />
     <ClInclude Include="sentence.h" />

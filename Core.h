@@ -23,7 +23,7 @@ protected:
 	std::istream& read_common(std::istream&);
 	double midterm, final;
 	std::vector<double> homework;
-	
+	// move clone to public
 	
 private:
 	std::string n;

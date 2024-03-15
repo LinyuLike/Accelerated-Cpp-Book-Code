@@ -15,7 +15,7 @@ public:
     Grad* clone() const;
     
 protected:
-    
+    // move clone to public
 
 private:
     double thesis;
